@@ -14,17 +14,24 @@ function populateTable() {
     for (i = 0; i < designs.length; i++) {
       tableBody += '<tr>';
       tableBody += '  <td>' + designs[i].designid + '</td>';
-      tableBody += '  <td>' + designs[i].uname + '</td>';
+      // Changes were made here
+      tableBody += '  <td>  <img src=" ' + designs[i].uname + '" alt="Picture "></td>';
+      tableBody += '  <td>  <a href=" ' + designs[i].uname + '" > <input type="button" class="btn btn-outline-primary" value="Preview" ></td>';
+      // end
       tableBody += '  <td>' + designs[i].shade + '</td>';
       tableBody += '  <td>' + designs[i].udept + '</td>';
       tableBody += '  <td>' + designs[i].contperc + '</td>';
       tableBody += '  <td>' + designs[i].gsm + '</td>';
       tableBody += '  <td>' + designs[i].width + '</td>';
       tableBody += '  <td>' + designs[i].uip + '</td>';
+      // Changes were made here
+      tableBody += '  <td> <a download="'+ designs[i].uname2 + '" href="' + designs[i].uname +'"> <input type="button" class="btn btn-outline-primary" value="Download" ></a></td>';
+      // end
       tableBody += '  <td><a href="update.html"><input type="button" class="btn btn-outline-primary" value="Update" onclick="myFunction(\'' + designs[i]._id + '\')"></a></td>'
       tableBody += '  <td><input type="button" class="btn btn-outline-danger" value="Delete" onclick="popupmsg(\'' + designs[i].designid + '\')"></td>'
       tableBody += '</tr>';
     }
+    //
 
     // Fill the table content
     document.getElementById('tablebody').innerHTML = tableBody;
