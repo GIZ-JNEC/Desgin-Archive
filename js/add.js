@@ -10,15 +10,16 @@ window.onload = function() {
 
     // Retrieve the input fields
     var designid =document.getElementById('did').value;
-   
+   // console.log(typeof(designid1));
+    //var designid=parseInt(designid1);
     //var regexp= new RegExp("^\d*\.?\*$");
-    var uname = document.getElementById('uname');
+    var csample = document.getElementById('csample');
     var shade = document.getElementById('shade');
     var refcode = document.getElementById('refcode');
-    var contperc = document.getElementById('contperc');
+    var percent = document.getElementById('percent');
     var gsm = document.getElementById('gsm');
     var width = document.getElementById('width');
-    var uip = document.getElementById('uip');
+    var cad = document.getElementById('cad');
     var count = 0;
      //check designid is listed already or not
      database.getPersons(function(designs){
@@ -32,9 +33,18 @@ window.onload = function() {
       }
      // console.log(typeof(NaN));
       
-        if (designid!== "" && uname.value !== "" && count==designs.length) {
+        if (designid!== "" && csample.value !== "" && count==designs.length) {
           console.log(typeof(designid));
-          database.addPerson(designid, uname.value, shade.value, refcode.value, contperc.value, gsm.value, width.value, uip.value);
+          
+          
+          var uvalue = csample.value;
+          var imagename = uvalue.replace(/^.*\\/, "");
+          console.log(imagename);
+          var path = "images/";
+          var imagepath = path.concat(imagename);
+          
+          
+          database.addPerson(designid, imagepath, shade.value, refcode.value, percent.value, gsm.value, width.value, cad.value);
           var successMsg = document.getElementById("msg");
           successMsg.innerHTML = "SUCCESS: Design Added Successfully";
           successMsg.style.color = "green";
@@ -42,7 +52,7 @@ window.onload = function() {
           
           if(count!=designs.length){
             var errorMsg = document.getElementById("msg");
-            errorMsg.innerHTML = "ERROR: DesignId is already listed";
+            errorMsg.innerHTML = "ERROR: Design Id is already listed";
             errorMsg.style.color = "Red";
           }
           else{
@@ -54,13 +64,13 @@ window.onload = function() {
         }  
       // Reset the input fields
       designid.value = '';
-      uname.value = '';
+      csample.value = '';
       shade.value = '';
       refcode.value='';
-      contperc.value='';
+      percent.value='';
       gsm.value = '';
       width.value = '';
-      uip.value = '';
+      cad.value = '';
   
       // Repopulate the table
       // populateTable();
@@ -68,7 +78,7 @@ window.onload = function() {
 
 
      })
-    // Save the design in the database if form value is not blank
+    // Save the person in the database if form value is not blank
     
   });
 }
@@ -84,13 +94,13 @@ function populateTable() {
     for (i = 0; i < designs.length; i++) {
       tableBody += '<tr>';
       tableBody += '  <td>' + designs[i].designid + '</td>';
-      tableBody += '  <td>' + designs[i].uname + '</td>';
+      tableBody += '  <td>' + designs[i].csample + '</td>';
       tableBody += '  <td>' + designs[i].shade + '</td>';
       tableBody += '  <td>' + designs[i].refcode + '</td>';
-      tableBody += '  <td>' + designs[i].contperc + '</td>';
+      tableBody += '  <td>' + designs[i].percent + '</td>';
       tableBody += '  <td>' + designs[i].gsm + '</td>';
       tableBody += '  <td>' + designs[i].width + '</td>';
-      tableBody += '  <td>' + designs[i].uip + '</td>';
+      tableBody += '  <td>' + designs[i].cad + '</td>';
 
       tableBody += '  <td><input type="button" value="Update" onclick="editPerson(\'' + designs[i]._id + '\')"></td>'
       tableBody += '  <td><input type="button" value="Delete" onclick="deletePerson(\'' + designs[i]._id + '\')"></td>'
@@ -105,10 +115,10 @@ function populateTable() {
   });
 }
 
-// Deletes a design
+// Deletes a person
 function deletePerson(id) {
 
-  // Delete the design from the database
+  // Delete the person from the database
   database.deletePerson(id);
 
   // Repopulate the table

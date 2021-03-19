@@ -1,17 +1,13 @@
 <!doctype html>
-
 <html class="no-js" lang="">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vatan Textiles</title>
     <meta name="description" content="Library Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -23,6 +19,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 
@@ -46,21 +43,19 @@
                     <li class="active">
                         <a href="dashboard.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
-                    <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->
-                    
+                    <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->                    
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="menu-icon fa fa-table"></i>Design Archives</a>
+                            <i class="menu-icon fa fa-table"></i>Designs</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="view.html">view</a></li>
-                            <li><i class="fa fa-table"></i><a href="add.html">Add </a></li>
+                            <li><i class="fa fa-table"></i><a href="view.html">View</a></li>
+                            <li><i class="fa fa-table"></i><a href="add.html">Add</a></li>
                         </ul>
                     </li>
                     <!-- /.menu-title -->
                     <li>
                         <a href="barcode.html"> <i class="fa fa-barcode"></i>Barcode </a>
-                    </li>
-                    
+                    </li>                    
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
@@ -85,13 +80,31 @@
         </div>
 
         <div class="content mt-3">
-            
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            Total Number of testdb
+                        </h4>
+                        <p class="text-light" id="bookcount">
+
+                        </p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--/.col-->
 
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-2">
                     <div class="card-body pb-0">
                         <h4 class="mb-0">
-                            Total Number of Records
+                            Total Number of Designs
                         </h4>
                         <p class="text-light" id="usercount">
 
@@ -107,8 +120,6 @@
             <!--/.col-->
 
             
-
-           
 
         </div> <!-- .content -->
         <!---MOnnthly report --->
@@ -134,20 +145,20 @@
             var usercounhtmlt = '';
             usercounhtmlt += ' <span class="count">' + usercount + '</span>'
             document.getElementById('usercount').innerHTML = usercounhtmlt;
-            //issuedbookcount
-            database.issuedbookcount();
-            var issuedbookcount = localStorage.getItem("issuedbook");
-            //console.log(issuedbookcount);
-            var issuedbookcounhtmlt = '';
-            issuedbookcounhtmlt += ' <span class="count">' + issuedbookcount + '</span>'
-            document.getElementById('issuedbookcount').innerHTML = issuedbookcounhtmlt;
+            //test1dbcount
+            database.test1dbcount();
+            var test1dbcount = localStorage.getItem("test1db");
+            //console.log(test1dbcount);
+            var test1dbcounhtmlt = '';
+            test1dbcounhtmlt += ' <span class="count">' + test1dbcount + '</span>'
+            document.getElementById('test1dbcount').innerHTML = test1dbcounhtmlt;
             //free book count
-            var freebook = bookcount - issuedbookcount;
+            var freebook = bookcount - test1dbcount;
             var freebookhtm = '';
             freebookhtm += '<span class="count">' + freebook + '</span>'
             document.getElementById('freebook').innerHTML = freebook;
 
-            database.getissuedbook(function (books) {
+            database.gettest1db(function (testdb) {
                 var date = new Date();
                 var month = date.getMonth();
                 var month = month + 1;
@@ -155,32 +166,32 @@
                 console.log(month);
                 //console.log(monthh);
                 var tablebody = '';
-                for (i = 0; i < books.length; i++) {
-                    /*  if(books[i].today.includes(monthh)){
+                for (i = 0; i < testdb.length; i++) {
+                    /*  if(testdb[i].today.includes(monthh)){
                           console.log('true');
                      tablebody+= '<tr>';
-                     tablebody+= '<td>' + books[i].bookid + '</td>';
-                     tablebody+= '<td>' + books[i].userid + '</td>';
-                     tablebody+= '<td>' + books[i].today + '</td>';
+                     tablebody+= '<td>' + testdb[i].bookid + '</td>';
+                     tablebody+= '<td>' + testdb[i].designid + '</td>';
+                     tablebody+= '<td>' + testdb[i].today + '</td>';
                      tablebody+= '</tr>';
                      document.getElementById("tablebody").innerHTML=tablebody; 
                      }*/
-                    //console.log(books[i].bookid);
-                    // var fix = books[i].today;
+                    //console.log(testdb[i].bookid);
+                    // var fix = testdb[i].today;
                     // console.log(fix.contains(monthh));
                     //var finalfix= fix.includes(monthh, 3);
                     //console.log(fix.indexOf("-10-"));
                     //
-                    var fix = String(books[i].renew_date);
+                    var fix = String(testdb[i].renew_date);
                     console.log(fix);
 
                     function findNewProgrammingLanguage(language) {
 
                         if (fix.indexOf(monthh) >= 0) {
                             tablebody += '<tr>';
-                            tablebody += '<td>' + books[i].bookid + '</td>';
-                            tablebody += '<td>' + books[i].userid + '</td>';
-                            tablebody += '<td>' + books[i].renew_date + '</td>';
+                            tablebody += '<td>' + testdb[i].bookid + '</td>';
+                            tablebody += '<td>' + testdb[i].designid + '</td>';
+                            tablebody += '<td>' + testdb[i].renew_date + '</td>';
                             tablebody += '</tr>';
                             document.getElementById("tablebody").innerHTML = tablebody;
 

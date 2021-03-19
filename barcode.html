@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vatan Textiles</title>
@@ -15,10 +15,12 @@
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="css/flag-icon.min.css">
     <link rel="stylesheet" href="css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="scss/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 <body>
@@ -41,8 +43,7 @@
                     <li class="active">
                         <a href="dashboard.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
-                    <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->
-                   
+                    <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->                    
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Designs</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -53,8 +54,7 @@
                 <!-- /.menu-title -->
                     <li>
                         <a href="barcode.html"> <i class="fa fa-barcode"></i>Barcode </a>
-                    </li>
-                    
+                    </li>                    
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
@@ -94,18 +94,12 @@
                       <div class="card-body card-block">
                         <form action="" method="post" class="form-horizontal" onsubmit="return false;">
                           <div class="row form-group">
-                            <div class="col col-md-3"><label for="hf-email" class=" form-control-label">designid ID</label></div>
-                            <div class="col-12 col-md-9"><input type="number" id="did" name="hf-email" placeholder="Scan the Barcode" class="form-control"><span class="help-block">Please enter bookid</span></div>
+                            <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Design ID</label></div>
+                            <div class="col-12 col-md-9"><input type="number" id="bookid" name="hf-email" placeholder="Scan the Barcode" class="form-control"><span class="help-block">Please enter DesignID</span></div>
                           </div>
                         </form>
                       </div>
-                      <div class="card-footer">
-                        
-                        <button type="reset" class="btn btn-info btn-sm" onclick="myFunction(event)"><a href="view.html"><div style="color:white;">
-                         Search</div></a>
-                        </button>
-                        
-                      </div>
+                      
                       <div class="col" id="msg">
 
                       </div>
@@ -130,7 +124,7 @@
         function myFunction(event){
            if (document.getElementById('bookid').value=== ""){
             var errorMsg = document.getElementById("msg");
-            errorMsg.innerHTML = "ERROR: Please Fill Up Design ID Field"
+            errorMsg.innerHTML = "ERROR: Please Fill Up Book Id Field"
             errorMsg.style.color ="Red";
             event.preventDefault();
            }
@@ -163,23 +157,23 @@
             //console.log(mm);
            }
            renew_date= dd + '-' + mm + '-' + yy;
-           database.getissuedbook(function(book){
+           database.gettest1db(function(book){
            for(i=0;i<book.length;i++){
             var bookid1=book[i].bookid;
             //console.log(bookid1);
             var bookid2=book[i]._id;
             //console.log(bookid2);
-            var userid=book[i].userid;
-            var uname=book[i].uname;
+            var designid=book[i].designid;
+            var csample=book[i].csample;
             var issued_date=book[i].issued_date;
             //var today1=book[i].today;
            //console.log(book[i].bookid);
             if(bookid1==bookid)
             {
-                //console.log(userid);
+                //console.log(designid);
                 //console.log(today);
                 //console.log(bookid);
-                database.updateIssuedBook(bookid2, {bookid, userid, uname, issued_date, renew_date});
+                database.updateIssuedBook(bookid2, {bookid, designid, csample, issued_date, renew_date});
             }
             } 
            });

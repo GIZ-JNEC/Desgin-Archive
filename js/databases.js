@@ -1,31 +1,39 @@
 // Initialize the database
 var Datastore = require('nedb');
-
+db = new Datastore({
+  filename: 'db/testdb.db',
+  autoload: true
+});
+db1 = new Datastore({
+  filename: 'db/test1db.db',
+  autoload: true
+});
 db2 = new Datastore({
   filename: 'db/designs.db',
   autoload: true
 });
 
-// Adds a design
-exports.addPerson = function(designid, uname, shade, refcode, contperc, gsm, width,  uip) {
+// Adds a person
+exports.addPerson = function(designid, csample, shade, refcode, percent, gsm, width,  cad) {
 
-  // Create the design object
-  var design = [{
+  // Create the person object
+  var person = [{
     "designid": designid,
-    "uname": uname,
+    "csample": csample,
     "shade": shade,
     "refcode": refcode,
-    "contperc": contperc,
+    "percent": percent,
     "gsm": gsm,
     "width": width,
-    "uip": uip
+    "cad": cad
   }];
 
-  // Save the design to the database
-  db2.insert(design, function(err, newDoc) {
+  // Save the person to the database
+  db2.insert(person, function(err, newDoc) {
     // Do nothing
   });
 };
+
 
 
 
@@ -47,46 +55,125 @@ exports.getPersons = function(fnc) {
     fnc(docs);
   });
 }
+//Retruns all the books (imp dnd)
+exports.getBooks = function(fnc) {
+
+  // Get all designs from the database
+  db.find({}, function(err, docs) {
+
+    db.find({
+      _id: fnc
+    }, {}, function(err, findUpdate) {
+
+    });
 
 
+    // Execute the parameter function
+    fnc(docs);
+  });
+}
+
+exports.gettest1db = function(fnc) {
 
 
-// Deletes a design
+  db1.find({}, function(err, docs) {
+
+    db1.find({
+      _id: fnc
+    }, {}, function(err, findUpdate) {
+
+    });
+
+    //Execute the parameter function
+    fnc(docs);
+  });
+
+}
+
+// Deletes a person
 exports.deletePerson = function(id) {
 
   db2.remove({
-    design: id
+    designid: id
   }, {}, function(err, numRemoved) {
     // Do nothing
   });
 }
+exports.deleteBook = function(id) {
+
+  db.remove({
+    bookid: id
+  }, {}, function(err, numRemoved) {
 
 
 
-// Updates a design
+  });
 
-// Update a design
-exports.update = function(id, {
+}
+exports.deleteIssuedBbook = function(id) {
+  db1.remove({
+    bookid: id
+  }, {}, function(err, numRemoved) {
+
+
+  });
+}
+
+// Updates a person
+exports.updateBook = function(id, {
+  bookid,
+  acnum,
+  booktittle,
+  authornamee,
+  publishername,
+  publishplace,
+  yearofpublishing,
+  pagination,
+  remarks,
+  issbn,
+  bcasenum,
+  shelfnum
+}) {
+
+  db.update({
+    bookid: id
+  });
+
+}
+exports.updateIssuedBook = function(id, {
+  bookid,
   designid,
-  uname,
+  csample,
+  issued_date,
+  renew_date
+}) {
+
+  db1.update({
+    _id: id
+  });
+}
+// Update a person
+exports.updateUser = function(id, {
+  designid,
+  csample,
   shade,
   refcode,
-  contperc,
+  percent,
   gsm,
   width,
-  uip
+  cad
 }) {
   db2.update({
     designid: id
   }, {
     designid: designid,
-    uname: uname,
+    csample: csample,
     shade: shade,
     refcode: refcode,
-    contperc: contperc,
+    percent: percent,
     gsm: gsm,
     width: width,
-    uip: uip
+    cad: cad
   }, {}, function(err, numReplaced) {
     // numReplaced = 1
     // The doc #3 has been replaced by { _id: 'id3', planet: 'Pluton' }
@@ -95,24 +182,7 @@ exports.update = function(id, {
   });
 }
 
-exports.issueabook = function(bookid,designid, uname, issued_date, renew_date) {
-  //create the book object
-  var issuedbook = [{
-    "bookid": bookid,
-    "designid": designid,
-    "uname": uname,
-    "issued_date": issued_date,
-    "renew_date": renew_date,
 
-  }];
-  //save the book to the database
-  db1.insert(issuedbook, function(err, newDoc) {
-
-    //do nothing
-  })
-
-
-};
 exports.bookcount = function(fnc) {
 
   db.count({}, function(err, count) {
@@ -145,19 +215,4 @@ exports.usercount = function(fnc) {
 
 
 };
-exports.issuedbookcount = function(fnc) {
 
-  db1.count({}, function(err, count) {
-
-    //console.log(count);
-    localStorage.setItem("issuedbook", count);
-
-
-
-
-  });
-
-
-
-
-};

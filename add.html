@@ -1,16 +1,13 @@
 <!doctype html>
 <html class="no-js" lang="">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Vatan Textiles</title>
   <meta name="description" content="Sufee Admin - HTML5 Admin Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="apple-touch-icon" href="apple-icon.png">
   <link rel="shortcut icon" href="favicon.ico">
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -19,14 +16,10 @@
   <link rel="stylesheet" href="css/cs-skin-elastic.css">
   <link rel="stylesheet" href="scss/style.css">
   <script src="js/add.js"></script>
-
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
-  <!-- Left Panel -->
-
 
   <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
@@ -44,7 +37,7 @@
           <li class="active">
             <a href="dashboard.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
           </li>
-          <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->
+          <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->          
           <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Designs</a>
             <ul class="sub-menu children dropdown-menu">
@@ -55,8 +48,7 @@
           <!-- /.menu-title -->
           <li>
             <a href="barcode.html"> <i class="fa fa-barcode"></i>Barcode </a>
-          </li>
-          
+          </li>         
       </div><!-- /.navbar-collapse -->
     </nav>
   </aside>
@@ -74,7 +66,7 @@
       <div class="col-sm-4">
         <div class="page-header float-left">
           <div class="page-title">
-            <h1>Add User</h1>
+            <h1>Add Design</h1>
           </div>
         </div>
       </div>
@@ -88,17 +80,17 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-header">
-                <strong>User</strong> Form
+                <strong>Designs</strong>
               </div>
               <div class="card-body card-block">
                 <form action="" method="post" class="form-horizontal">
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Design ID</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="did" name="hf-email" placeholder="Design ID)" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="number" id="did" name="hf-email" placeholder="Design ID (Required)" class="form-control"></div>
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-password" class=" form-control-label">Image</label></div>
-                    <div class="col-12 col-md-9"><input type="file" id="uname" name="hf-password" placeholder=" upload image" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="file" id="csample" name="hf-password" placeholder="Image" class="form-control"></div>
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Shade</label></div>
@@ -106,23 +98,23 @@
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Reference Code</label></div>
-                    <div class="col-12 col-md-9"><input type="email" id="refcode" name="hf-email" placeholder="Reference Code" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="email" id="refcode" name="hf-email" placeholder="Code" class="form-control"></div>
                   </div>
                   <div class="row form-group">
-                    <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Content Percentag</label></div>
-                    <div class="col-12 col-md-9"><input type="email" id="contperc" name="hf-email" placeholder="Content Percentag" class="form-control"></div>
+                    <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Content Percentage</label></div>
+                    <div class="col-12 col-md-9"><input type="email" id="percent" name="hf-email" placeholder="%" class="form-control"></div>
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">GSM</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="gsm" name="hf-email" placeholder="GSM" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="text" id="gsm" name="hf-email" placeholder="gsm" class="form-control"></div>
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Width</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="width" name="hf-email" placeholder="Width" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="text" id="width" name="hf-email" placeholder="width" class="form-control"></div>
                   </div>
                   <div class="row form-group">
-                    <div class="col col-md-3"><label for="hf-email" class=" form-control-label">IP No</label></div>
-                    <div class="col-12 col-md-9"><input type="email" id="uip" name="hf-email" placeholder="IP NO" class="form-control"><span class="help-block">Please enter User IP</span></div>
+                    <div class="col col-md-3"><label for="hf-email" class=" form-control-label">CAD File</label></div>
+                    <div class="col-12 col-md-9"><input type="email" id="cad" name="hf-email" placeholder="CAD" class="form-control"></div>
                   </div>
                 </form>
               </div>

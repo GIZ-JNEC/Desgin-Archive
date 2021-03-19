@@ -1,5 +1,5 @@
 {
-  "name": "design-archives",
+  "name": "Design-Archives",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -7,11 +7,11 @@
     "postinstall": "install-app-deps",
     "start": "npm install && electron .",
     "pack": "build --dir",
-    "build": "electron-packager . library --platform win32 --arch x64 --out dist/",
+    "build": "electron-packager . designs --platform win32 --arch x64 --out dist/",
     "setup": "electron-installer-windows --src dist/app-win32-x64/ --dest dist/installers/"
   },
-  "author": "Purnendu",
-  "license": "",
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^1.4.8",
     "electron-builder": "^20.38.5",

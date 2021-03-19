@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/flag-icon.min.css">
     <link rel="stylesheet" href="css/cs-skin-elastic.css">
     <link rel="stylesheet" href="css/lib/datatable/dataTables.bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="scss/style.css">
     <script>window.$ = window.jQuery = require('./js/vendor/jquery-2.1.4.min.js');</script>
     <script src="js/plugins.js"></script>
@@ -53,6 +54,7 @@
         </script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 <body>
@@ -75,13 +77,12 @@
                     <li class="active">
                         <a href="dashboard.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
-                    <h3 class="menu-title">Designs</h3><!-- /.menu-title -->
-                    
+                    <h3 class="menu-title">Design Archives</h3><!-- /.menu-title -->                    
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Designs</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="view.html">View</a></li>
-                            <li><i class="fa fa-table"></i><a href="add.html">Add</a></li>
+                            <li><i class="fa fa-table"></i><a href="adduser.html">Add</a></li>
                         </ul>
                     </li>
                 <!-- /.menu-title -->
@@ -112,13 +113,14 @@
                     <thead>
                       <tr>
                         <th name ="designid"> Design ID</th>
-                        <th name = "uname">Image</th>
+                        <th name = "csample">Image</th>
+                        <th name = "csamplep">Preview</th>
                         <th name = "shade">Shade</th>
                         <th name ="refcode">Reference Code</th>
-                        <th name ="contperc">Content Percentage</th>
+                        <th name ="percent">Content Percentage</th>
                         <th name ="gsm">GSM</th>
                         <th name ="width">Width</th>
-                        <th name ="uip">testdata</th>
+                        <th name ="cad">CAD File</th>
                         <th name="edit">Edit</th>
                         <th name ="delete"> Delete</th>
 

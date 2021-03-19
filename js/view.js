@@ -13,14 +13,15 @@ function populateTable() {
     var tableBody = '';
     for (i = 0; i < designs.length; i++) {
       tableBody += '<tr>';
-      tableBody += '  <td>' + designs[i].designid + '</td>';
-      tableBody += '  <td>' + designs[i].uname + '</td>';
+      tableBody += '  <td>' + designs[i].designid + '</td>';      
+      tableBody += '  <td>  <img src=" ' + designs[i].csample + '" alt="Picture "></td>';
+      tableBody += '  <td>  <a href=" ' + designs[i].csample + '" > <input type="button" class="btn btn-outline-primary" value="Preview" ></td>';
       tableBody += '  <td>' + designs[i].shade + '</td>';
-      tableBody += '  <td>' + designs[i].udept + '</td>';
-      tableBody += '  <td>' + designs[i].contperc + '</td>';
+      tableBody += '  <td>' + designs[i].refcode + '</td>';
+      tableBody += '  <td>' + designs[i].percent + '</td>';
       tableBody += '  <td>' + designs[i].gsm + '</td>';
       tableBody += '  <td>' + designs[i].width + '</td>';
-      tableBody += '  <td>' + designs[i].uip + '</td>';
+      tableBody += '  <td>' + designs[i].cad + '</td>';
       tableBody += '  <td><a href="update.html"><input type="button" class="btn btn-outline-primary" value="Update" onclick="myFunction(\'' + designs[i]._id + '\')"></a></td>'
       tableBody += '  <td><input type="button" class="btn btn-outline-danger" value="Delete" onclick="popupmsg(\'' + designs[i].designid + '\')"></td>'
       tableBody += '</tr>';
@@ -43,8 +44,8 @@ function popupmsg(id) {
   console.log(id);
   var txt;
   var count =0;
-  if (confirm("Do you want to delete the user")) {
-        database.getissuedbook(function(books){
+  if (confirm("Do you want to delete the design")) {
+        database.gettest1db(function(books){
         for(i=0;i<books.length;i++){
           if(books[i].designid==id){
             count++;
@@ -56,28 +57,21 @@ function popupmsg(id) {
         }
         if(count==0){
           database.deletePerson(id);
-          alert("User is deleted successfully");
+          alert("Design is deleted successfully");
         }
         else{
-          alert("User has book issued, can not delete it now");
+          alert("Design can not delete it now");
         }
  
         });       
-    // var errorMsg = document.getElementById("msg");
-            //errorMsg.innerHTML = "Success: Book is deleted successfully";
-            //errorMsg.style.color = "Green";
+
   } else {
-   // txt = "You pressed Cancel!";
   }
-  //document.getElementById("demo").innerHTML = txt;
 }
-// Retrieve the designs
-// Deletes a design
+
 function deletePerson(id) {
-  // Delete the design from the database
   database.deletePerson(id);
 
-  // Repopulate the table
   populateTable();
 }
 
@@ -98,7 +92,7 @@ function edit(id) {
 function myFunction(id) {
 
   if (typeof(Storage) !== "undefined") {
-    var updateDesignid = id;
-    localStorage.setItem("designid", updateDesignid);
+    var updateUserid = id;
+    localStorage.setItem("designid", updateUserid);
   }
 }
