@@ -6,6 +6,12 @@ window.onload = function() {
 
 }
 
+$(function() {
+    $('#close').click(function() {
+        $('#float_bottom_left').remove();
+    });
+});
+
 function populateTable() {
   database.getPersons(function(designs) {
 
@@ -14,8 +20,7 @@ function populateTable() {
     for (i = 0; i < designs.length; i++) {
       tableBody += '<tr>';
       tableBody += '  <td>' + designs[i].designid + '</td>';      
-      tableBody += '  <td>  <img src=" ' + designs[i].csample + '" alt="Picture "></td>';
-      tableBody += '  <td>  <a href=" ' + designs[i].csample + '" > <input type="button" class="btn btn-outline-primary" value="Preview" ></td>';
+      tableBody += '  <td>  <a href=" ' + designs[i].csample + '" ><div id="float_bottom_left"><img src=" ' + designs[i].csample + '" id="close "></div></td>';
       tableBody += '  <td>' + designs[i].shade + '</td>';
       tableBody += '  <td>' + designs[i].refcode + '</td>';
       tableBody += '  <td>' + designs[i].percent + '</td>';
