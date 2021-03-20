@@ -107,7 +107,7 @@
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-password" class=" form-control-label">Image</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="csample" name="hf-password" placeholder="Image" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="file" id="csample" name="hf-password" placeholder="Image" class="form-control"></div>
                   </div>
                   <div class="row form-group">
                     <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Shade</label></div>
@@ -174,7 +174,7 @@
             for (i = 0; i < designid.length; i++) {
               if (designid[i]._id == designid1) {
                 document.getElementById('did').value = designid[i].designid;
-                document.getElementById('csample').value = designid[i].csample;
+                // document.getElementById('csample').value = designid[i].csample;
                 document.getElementById('shade').value = designid[i].shade;
                 document.getElementById('refcode').value = designid[i].refcode;
                 document.getElementById('percent').value = designid[i].percent;
@@ -204,7 +204,9 @@
         const database = require('./js/databases');
         // console.log(id);
         var designid = id;
-        var csample = document.getElementById('csample').value;
+
+        var imagead = document.getElementById('csample').value;
+            console.log(imagead);
         var shade = document.getElementById('shade').value;
         var refcode = document.getElementById('refcode').value;
         var percent = document.getElementById('percent').value;
@@ -212,7 +214,14 @@
         var width = document.getElementById('width').value;
         var cad = document.getElementById('cad').value
         // console.log(id, designid, csample, shade, gsm, width);
-        if (designid.value !== "" && csample.value !== "") {
+        if (designid.value !== "" && imagead.value !== "") {
+          
+          var imagename = imagead.replace(/^.*\\/, "");
+          console.log(imagename);
+          var path = "images/";
+          var  csample = path.concat(imagename);
+          console.log(csample);
+
           database.updateUser(id, {
             designid,
             csample,
