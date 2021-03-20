@@ -9,6 +9,8 @@ After conducting some discussion sessions with industry we curated a list of iss
 ## Build status
 All the root functionalities needed for there day to day activities are achieved.
 
+## [Project Demo](https://youtu.be/SKScPsE3oPg)
+
 ### Login Page
 ![Login Page](./project-ui/login.png)
 
