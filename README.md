@@ -28,5 +28,5 @@ All the root functionalities needed for there day to day activities are achieved
 
 ## Techstack used:
 
-1. FrontEnd: HTML,CSS,JS
+1. FrontEnd: HTML,CSS,JS, Bootstrap
 2. BackeEnd: JS, Electron(for the cross platform application)
